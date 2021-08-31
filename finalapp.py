@@ -25,7 +25,11 @@ def predict_note_authentication(age, sex, cp, trestbps, chol, fbs, restecg, thal
     prediction=classifier.predict([[age, sex, cp, trestbps, chol, fbs, restecg, thalach,
        exang, oldpeak, slope, ca, thal]])
     print(prediction)
-    return prediction
+    if prediction==0:
+        pred="The patient has no heart disease"
+    else:
+        pred="The patient has heart disease"
+    return pred
 
 
 
@@ -59,9 +63,9 @@ def main():
     if st.button("Predict"):
         result=predict_note_authentication(age, sex, cp, trestbps, chol, fbs, restecg, thalach,
        exang, oldpeak, slope, ca, thal)        
-    st.success('The output is {}'.format(result))
+    st.success('{}'.format(result))
     if st.button("About"):
-        st.text("JOJO GEORGE")
+        st.text("Built by JOJO with lots of ❤️ in God's Own Country, Kerala")
 
 
 if __name__=='__main__':
